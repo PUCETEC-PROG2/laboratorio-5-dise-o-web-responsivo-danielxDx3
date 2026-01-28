@@ -1,15 +1,10 @@
-/* =======================
-   RESET + BASE
-======================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =======================
-   NAVBAR
-======================= */
 .navbar {
   position: sticky;
   top: 0;
@@ -23,9 +18,6 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-/* =======================
-   CONTENEDOR
-======================= */
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -38,9 +30,7 @@
   gap: 1rem;
 }
 
-/* =======================
-   LOGO
-======================= */
+
 .nav-logo {
   text-decoration: none;
   color: inherit;
@@ -63,7 +53,6 @@
     filter 0.35s ease;
 }
 
-/* Animación solo cuando tiene hover (desktop / mouse) */
 @media (hover: hover) {
   .nav-logo-group:hover .nav-logo-img {
     transform: rotate(-10deg) scale(1.12);
@@ -71,9 +60,6 @@
   }
 }
 
-/* =======================
-   MENÚ
-======================= */
 .nav-menu {
   list-style: none;
 
@@ -83,12 +69,10 @@
   flex-wrap: wrap;
 }
 
-/* ITEMS */
 .nav-item {
   display: flex;
 }
 
-/* LINKS */
 .nav-link {
   position: relative;
   display: inline-flex;
@@ -102,7 +86,7 @@
   padding: 0.6rem 1.25rem;
   border-radius: 999px;
 
-  line-height: 1; /* evita “saltos” visuales */
+  line-height: 1; 
   -webkit-tap-highlight-color: transparent;
 
   transition:
@@ -112,7 +96,6 @@
     box-shadow 0.25s ease;
 }
 
-/* Hover (solo para mouse/trackpad) */
 @media (hover: hover) {
   .nav-link:hover {
     background-color: #ff3d00;
@@ -121,7 +104,6 @@
     box-shadow: 0 8px 18px rgba(255, 61, 0, 0.28);
   }
 
-  /* Subrayado elegante solo desktop */
   .nav-link::after {
     content: "";
     position: absolute;
@@ -142,23 +124,17 @@
   }
 }
 
-/* Focus accesible */
 .nav-link:focus-visible {
   outline: 3px solid rgba(255, 61, 0, 0.35);
   outline-offset: 3px;
 }
 
-/* ACTIVO */
 .nav-link.active {
   background-color: #ff3d00;
   color: #ffffff;
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
-/* =======================
-   RESPONSIVE - TABLET (<=768px)
-   Logo arriba y menú vertical debajo
-======================= */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
@@ -184,14 +160,11 @@
   .nav-link {
     width: 100%;
     text-align: center;
-    transform: none; /* evita saltos en touch */
+    transform: none; 
   }
 }
 
-/* =======================
-   RESPONSIVE - MOBILE (<=480px)
-   Botones más grandes y padding menor al contenedor
-======================= */
+
 @media (max-width: 480px) {
   .nav-container {
     padding: 0.8rem 1rem;
@@ -203,21 +176,20 @@
   }
 
   .nav-link {
-    padding: 0.8rem 1rem; /* más cómodo para tocar */
+    padding: 0.8rem 1rem; 
   }
 }
 /* =======================
    HAMBURGER (CSS ONLY)
 ======================= */
 
-/* oculto por defecto (desktop) */
+
 .nav-toggle {
   display: none;
 }
 
-/* botón hamburguesa */
 .nav-toggle-label {
-  display: none; /* se muestra solo en mobile */
+  display: none; 
   width: 44px;
   height: 44px;
   border-radius: 12px;
@@ -246,11 +218,10 @@
   transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
-/* ========== MOBILE (<=768px) ========== */
+
 @media (max-width: 768px) {
-  /* logo a la izquierda, hamburguesa a la derecha */
   .nav-container {
-    flex-direction: row;       /* cambia respecto a tu versión */
+    flex-direction: row;      
     align-items: center;
   }
 
@@ -259,16 +230,14 @@
   }
 
   .nav-toggle-label {
-    display: flex;             /* aparece el botón */
+    display: flex;         
   }
 
-  /* menú oculto por defecto */
   .nav-menu {
     width: 100%;
     flex-direction: column;
     gap: 0.45rem;
 
-    /* ocultar/mostrar con animación */
     max-height: 0;
     overflow: hidden;
     opacity: 0;
@@ -288,14 +257,12 @@
     transform: none;
   }
 
-  /* ✅ cuando está activado el checkbox, se abre */
   .nav-toggle:checked ~ .nav-menu {
-    max-height: 500px; /* suficiente para tus links */
+    max-height: 500px; 
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* animación a X */
   .nav-toggle:checked + .nav-toggle-label span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
@@ -306,13 +273,11 @@
     transform: translateY(-8px) rotate(-45deg);
   }
 
-  /* quita subrayado elegante en mobile (si lo tenías) */
   .nav-link::after {
     display: none;
   }
 }
 
-/* MOBILE pequeño (<=480px) */
 @media (max-width: 480px) {
   .nav-container {
     padding: 0.8rem 1rem;

@@ -1,21 +1,15 @@
-/* =======================
-   RESET + FIX OVERFLOW
-======================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ✅ evita el “descuadre” raro hasta que cambias tamaño */
 html, body {
   width: 100%;
   overflow-x: hidden;
 }
 
-/* =======================
-   CONTENEDOR
-======================= */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -23,10 +17,6 @@ html, body {
   width: 100%;
 }
 
-/* =======================
-   GRID FLEX (3-2-1)
-   ✅ sin padding aquí para no duplicar con .container
-======================= */
 .trainers-grid {
   display: flex;
   flex-wrap: wrap;
@@ -35,12 +25,9 @@ html, body {
 
   width: 100%;
   max-width: 100%;
-  padding: 0; /* ✅ clave */
+  padding: 0; 
 }
 
-/* =======================
-   CARD
-======================= */
 .trainer-card {
   background: #ffffff;
   border-radius: 12px;
@@ -49,11 +36,9 @@ html, body {
   display: flex;
   flex-direction: column;
 
-  /* 3 columnas */
   flex: 1 1 calc(33.333% - 18px);
   max-width: calc(33.333% - 18px);
 
-  /* evitar overflow */
   min-width: 260px;
   max-width: 100%;
 
@@ -67,10 +52,7 @@ html, body {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
 }
 
-/* =======================
-   IMAGEN (AVATAR)
-   ✅ object-fit: cover
-======================= */
+
 .trainer-image {
   width: 100%;
   height: 175px;
@@ -81,13 +63,12 @@ html, body {
 .trainer-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* ✅ requerido */
+  object-fit: cover;      
   object-position: center;
-  display: block;         /* ✅ evita espacios raros */
+  display: block;        
   max-width: 100%;
 }
 
-/* si tu HTML usa <img class="trainer-image" ...> */
 img.trainer-image {
   width: 100%;
   height: 175px;
@@ -108,7 +89,7 @@ img.trainer-image {
   flex-direction: column;
   gap: 6px;
 
-  flex: 1;            /* ✅ empuja el estado abajo */
+  flex: 1;            
   max-width: 100%;
 }
 
@@ -131,7 +112,6 @@ img.trainer-image {
   max-width: 100%;
 }
 
-/* separador suave opcional (si usas <hr>) */
 .trainer-info hr {
   border: 0;
   height: 1px;
@@ -139,11 +119,8 @@ img.trainer-image {
   margin: 6px 0;
 }
 
-/* =======================
-   BADGE / ESTADO (PERSONALIZADOS)
-======================= */
 .trainer-status {
-  margin-top: auto;      /* ✅ siempre abajo */
+  margin-top: auto;      
   align-self: flex-start;
 
   padding: 6px 12px;
@@ -157,7 +134,6 @@ img.trainer-image {
   max-width: 100%;
 }
 
-/* ✅ Colores por estado */
 .status-active {
   background: #e9fff3;
   color: #0b6b3a;
@@ -183,17 +159,11 @@ img.trainer-image {
   color: #6b4e00;
 }
 
-/* fallback por si no pones clase de estado */
 .trainer-status:not([class*="status-"]) {
   background: rgba(0, 0, 0, 0.05);
   color: #222;
 }
 
-/* =======================
-   RESPONSIVE
-======================= */
-
-/* TABLET: 2 columnas */
 @media (max-width: 768px) {
   .container {
     padding: 20px;
@@ -209,7 +179,6 @@ img.trainer-image {
   }
 }
 
-/* MOBILE: 1 columna */
 @media (max-width: 480px) {
   .container {
     padding: 16px;
