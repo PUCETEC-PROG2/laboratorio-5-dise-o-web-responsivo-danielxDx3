@@ -1,0 +1,231 @@
+/* =======================
+   RESET + FIX OVERFLOW
+======================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ✅ evita el “descuadre” raro hasta que cambias tamaño */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* =======================
+   CONTENEDOR
+======================= */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+  width: 100%;
+}
+
+/* =======================
+   GRID FLEX (3-2-1)
+   ✅ sin padding aquí para no duplicar con .container
+======================= */
+.trainers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 100%;
+  padding: 0; /* ✅ clave */
+}
+
+/* =======================
+   CARD
+======================= */
+.trainer-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  /* 3 columnas */
+  flex: 1 1 calc(33.333% - 18px);
+  max-width: calc(33.333% - 18px);
+
+  /* evitar overflow */
+  min-width: 260px;
+  max-width: 100%;
+
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.trainer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+}
+
+/* =======================
+   IMAGEN (AVATAR)
+   ✅ object-fit: cover
+======================= */
+.trainer-image {
+  width: 100%;
+  height: 175px;
+  background: #f3f3f3;
+  max-width: 100%;
+}
+
+.trainer-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* ✅ requerido */
+  object-position: center;
+  display: block;         /* ✅ evita espacios raros */
+  max-width: 100%;
+}
+
+/* si tu HTML usa <img class="trainer-image" ...> */
+img.trainer-image {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  max-width: 100%;
+  background: #f3f3f3;
+}
+
+/* =======================
+   INFO
+======================= */
+.trainer-info {
+  padding: 14px 16px 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  flex: 1;            /* ✅ empuja el estado abajo */
+  max-width: 100%;
+}
+
+.trainer-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.trainer-region,
+.trainer-badges {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  max-width: 100%;
+}
+
+/* separador suave opcional (si usas <hr>) */
+.trainer-info hr {
+  border: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 6px 0;
+}
+
+/* =======================
+   BADGE / ESTADO (PERSONALIZADOS)
+======================= */
+.trainer-status {
+  margin-top: auto;      /* ✅ siempre abajo */
+  align-self: flex-start;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  font-weight: 800;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* ✅ Colores por estado */
+.status-active {
+  background: #e9fff3;
+  color: #0b6b3a;
+}
+
+.status-gym {
+  background: #e6f7ff;
+  color: #0b4a7a;
+}
+
+.status-coordinator {
+  background: #fff2e6;
+  color: #7a3b00;
+}
+
+.status-artist {
+  background: #f3e8ff;
+  color: #4b1b7a;
+}
+
+.status-champion {
+  background: #fff7d6;
+  color: #6b4e00;
+}
+
+/* fallback por si no pones clase de estado */
+.trainer-status:not([class*="status-"]) {
+  background: rgba(0, 0, 0, 0.05);
+  color: #222;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+/* TABLET: 2 columnas */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .trainers-grid {
+    gap: 16px;
+  }
+
+  .trainer-card {
+    flex: 1 1 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+  }
+}
+
+/* MOBILE: 1 columna */
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+  }
+
+  .trainers-grid {
+    gap: 12px;
+  }
+
+  .trainer-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0; 
+  }
+
+  .trainer-name {
+    white-space: normal;
+  }
+}
